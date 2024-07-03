@@ -1,5 +1,6 @@
-import { Controller, Get, Inject } from "@nestjs/common";
-import { ClientProxy, ClientProxyFactory, Transport } from "@nestjs/microservices";
+import { type IPost } from "@common/types";
+import { Body, Controller, Get, Inject, Post } from "@nestjs/common";
+import { ClientProxy } from "@nestjs/microservices";
 
 import { AppService } from "./app.service";
 
@@ -16,8 +17,8 @@ export class AppController {
     return this.notificationMS.send({ cmd: "get_notification" }, {});
   }
 
-  @Get("post")
-  getPostService() {
-    return this.postMS.send({ cmd: "get_post" }, {});
+  @Post("post")
+  handlePostService(@Body() data: IPost) {
+    return this.postMS.send({ cmd: "get_post" }, data);
   }
 }

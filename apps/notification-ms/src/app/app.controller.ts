@@ -1,4 +1,5 @@
-import { Controller, Get } from "@nestjs/common";
+import { type IPost } from "@common/types";
+import { Controller, Logger } from "@nestjs/common";
 import { MessagePattern } from "@nestjs/microservices";
 
 import { AppService } from "./app.service";
@@ -10,5 +11,10 @@ export class AppController {
   @MessagePattern({ cmd: "get_notification" })
   getData() {
     return this.appService.getData();
+  }
+
+  @MessagePattern({ cmd: "post_notification" })
+  handlePostNotification(data: Pick<IPost, "author">) {
+    Logger.log(`Некий ${data.author} опубликовал пост, А НУ БЕГОМ СМОТРЕТЬ`);
   }
 }
