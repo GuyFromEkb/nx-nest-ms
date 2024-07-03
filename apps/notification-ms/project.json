@@ -1,7 +1,7 @@
 {
-  "name": "api-gateway",
+  "name": "notification-ms",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/api-gateway/src",
+  "sourceRoot": "apps/notification-ms/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -9,15 +9,15 @@
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "api-gateway:build",
-        "port": 9230
+        "buildTarget": "notification-ms:build",
+        "port": 9231
       },
       "configurations": {
         "development": {
-          "buildTarget": "api-gateway:build:development"
+          "buildTarget": "notification-ms:build:development"
         },
         "production": {
-          "buildTarget": "api-gateway:build:production"
+          "buildTarget": "notification-ms:build:production"
         }
       }
     },
